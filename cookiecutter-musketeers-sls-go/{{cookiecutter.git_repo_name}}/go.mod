@@ -1,0 +1,1 @@
+module {{cookiecutter.app_go_package_path}}

@@ -1,0 +1,10 @@
+version: '3.4'
+services:
+  cookiecutter:
+    image: flemay/cookiecutter
+    entrypoint: ""
+    environment:
+      - "USER=${USER}"
+    volumes:
+      - .:/opt/app
+    working_dir: /opt/app

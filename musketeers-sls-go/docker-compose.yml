@@ -1,0 +1,23 @@
+version: '3.4'
+services:
+  golang:
+    image: golang:1.12
+    env_file: .env
+    volumes:
+      - .:/go/src/github.com/contino/musketeers-sls-go
+    working_dir: /go/src/github.com/contino/musketeers-sls-go
+
+  serverless:
+    image: amaysim/serverless
+    env_file: .env
+    volumes:
+      - ~/.aws:/root/.aws
+      - .:/opt/app
+    working_dir: /opt/app
+
+  auth:
+    image: contino/aws-google-auth
+    env_file: .env
+    volumes:
+      - ~/.aws:/root/.aws
+      

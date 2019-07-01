@@ -1,0 +1,23 @@
+    
+service: musketeers-sls-go
+package:
+  individually: true
+provider:
+  name: aws
+  runtime: go1.x
+  region: ${env:AWS_REGION}
+  stage: ${env:ENV}
+
+functions:
+  echo:
+    package:
+      artifact: bin/http.zip
+    handler: bin/http
+    description: returns the value of environment variable ECHO_MESSAGE
+    memorySize: 128
+    environment:
+      ECHO_MESSAGE: ${env:ECHO_MESSAGE}
+    events:
+      - http:
+          path: echo
+          method: get
