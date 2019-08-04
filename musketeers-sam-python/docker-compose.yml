@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  aws-cli:
+    image: contino/aws-cli:latest
+    env_file: .env
+    working_dir: /opt/app
+    volumes:
+      - .:/opt/app:rw
+      - ~/.aws:/root/.aws
+  aws-google-auth:
+    image: contino/aws-google-auth:0.0.28
+    env_file: .env
+    volumes:
+      - ~/.aws:/root/.aws
